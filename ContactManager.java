@@ -75,11 +75,20 @@ public class ContactManager {
             try {
                 System.out.print("Enter name: ");
                 name = scanner.nextLine();
+                int indexName = findContactIndex(name);
                 if (name.isEmpty()) {
                     throw new IllegalArgumentException("Empty Name detected! The Contact not add .Input it again");
-                } else {
+                } 
+                else if(indexName != -1){
+                    System.out.println("The Contact is Already here ");
+                }
+                else {
                     break;
                 }
+                
+                
+                
+
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -315,7 +324,7 @@ public class ContactManager {
                     contacts.add(new Contact(parts[0], parts[1], parts[2]));
                 }
             }
-            System.out.println("Contacts Loaded successfully.\n");
+            System.out.println("Contacts Files Loaded successfully.\n");
         } catch (IOException e) {
             System.out.println("Error loading contacts from file: " + e.getMessage());
         }
